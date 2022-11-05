@@ -29,4 +29,8 @@ Things you may want to cover:
 主なシーン：自分が気に入ったお店やスイーツを投稿したり、検索などで情報収集</br>
 
 実装機能リスト</br>
-https://docs.google.com/spreadsheets/d/1Ll4CkHoNDlOWGtcMZRKIrRDBzan3uBtMpcBVUTi98uA/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1Ll4CkHoNDlOWGtcMZRKIrRDBzan3uBtMpcBVUTi98uA/edit?usp=sharing</br>
+設計書</br>
+ER図などが完成次第追記する</br>
+使用素材</br>
+決まり次第記載
