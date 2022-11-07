@@ -19,6 +19,9 @@
 * デートやランチ、女子会をしたい時
 * 誕生日やバレンタインなどのイベントで予約や購入したいお店を探す時
 
+## 実装機能リスト
+https://docs.google.com/spreadsheets/d/1Ll4CkHoNDlOWGtcMZRKIrRDBzan3uBtMpcBVUTi98uA/edit?usp=sharing
+
 ## 設計書
 ER図が完成次第追記
 
