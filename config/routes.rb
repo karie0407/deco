@@ -12,9 +12,10 @@ Rails.application.routes.draw do
 scope module: :public do
   get "customers/my_page"=>"customers#show"
   get "customers/information/edit" =>"customers#edit"
-  get "customers/unsubscribe" => "customres#unsubscribe"
+  get "customers/unsubscribe" => "customers#unsubscribe"
   patch "customers/withdraw" => "customers#withdraw"
   root to: "homes#top"
+  get "/home/about" =>"homes#about",as:"about"
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
