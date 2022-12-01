@@ -10,10 +10,11 @@ Rails.application.routes.draw do
 }
 
 scope module: :public do
-  get "customers/my_page"=>"customers#show"
-  get "customers/information/edit" =>"customers#edit"
-  get "customers/unsubscribe" => "customers#unsubscribe"
-  patch "customers/withdraw" => "customers#withdraw"
+  get '/customers/my_page'=>"customers#show"
+  get '/customers/information/edit' =>"customers#edit"
+  patch '/customers/information' =>"customers#update"
+  get '/customers/unsubscribe' => "customers#unsubscribe"
+  patch '/customers/withdraw' => "customers#withdraw"
   root to: "homes#top"
   get "/home/about" =>"homes#about",as:"about"
 end
