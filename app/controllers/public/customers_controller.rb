@@ -13,7 +13,6 @@ class Public::CustomersController < ApplicationController
       redirect_to customers_my_page_path
     else
       render :edit
-      binding.pry
     end
   end
 
