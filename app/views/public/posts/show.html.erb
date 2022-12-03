@@ -1,2 +1,5 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+投稿詳細
+<%= image_tag @post.get_image(100,100) %>
+<%= @post.title %>
+<%= @post.introduction %>
+<%= @post.name %>

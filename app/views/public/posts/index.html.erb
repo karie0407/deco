@@ -1,8 +1,8 @@
 <h2>投稿一覧</h2>
 
-<% @posts.each do |post| %>
+<% @posts.each do |pos| %>
 
-<%= post.title %>
-<span><%= image_tag post.get_image(100,100) %></span>
-<%= post.introduction %>
+<%= pos.title %>
+<span><%= image_tag pos.get_image(100,100) %></span>
+<%= pos.introduction %>
 <% end %>

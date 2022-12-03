@@ -5,10 +5,10 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.customer_id = current_customer.id
-    if post.save
-      redirect_to post_path(post.id)
+    @post = Post.new(post_params)
+    @post.customer_id = current_customer.id
+    if @post.save
+      redirect_to post_path(@post.id)
     else
       render :new
     end
