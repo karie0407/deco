@@ -17,7 +17,7 @@ scope module: :public do
   patch '/customers/information' =>"customers#update"
   get '/customers/unsubscribe' => "customers#unsubscribe"
   patch '/customers/withdraw' => "customers#withdraw"
-  resources :posts
+  resources :post_images
   resources :bookmarks, only: [:create, :show, :destroy] do
    resources :comments, only: [:create, :destroy]
   end

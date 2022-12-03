@@ -1,0 +1,12 @@
+<h2>投稿内容編集</h2>
+
+<%= form_with model: @post_image, url: post_image_path, method: :patch do |f| %>
+<%= f.label :title,"タイトル" %>
+<%= f.text_field :title %>
+<%= f.label :introduction,"説明文" %>
+<%= f.text_area :introduction %>
+<%= f.label :image,"画像" %>
+<%= f.file_field :image, accept: "image/*" %>
+
+<%= f.submit "変更を保存する" %>
+<% end %>

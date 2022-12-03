@@ -1,4 +1,4 @@
-class Post < ApplicationRecord
+class PostImage < ApplicationRecord
   belongs_to :customer
   has_many :bookmarks, dependent: :destroy
   has_many :messages, dependent: :destroy

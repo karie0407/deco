@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   def show
+  @post_image = PostImage.new
   @customer = current_customer
   end
 

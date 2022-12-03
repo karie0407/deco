@@ -8,3 +8,8 @@
 
 <%= link_to "編集する",customers_information_edit_path %>
 <%= link_to "退会する",customers_unsubscribe_path %>
+<%if @customer.present? %>
+<%= render "public/post_images/new",post_image: @post_image %>
+<% else %>
+投稿したい方は会員登録をお願いします
+<% end %>
