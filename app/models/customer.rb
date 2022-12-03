@@ -12,5 +12,12 @@ class Customer < ApplicationRecord
    customer.name = "ゲスト"
    customer.password = SecureRandom.urlsafe_base64
    end
-  end
+   end
+   def self.looks(searches, words)
+     if searches == "perfect_match"
+     @customer = Customer.where("name LIKE ?","#{words}")
+     else
+      @customer = Customer.where("name LIKE ?","%#{words}#")
+     end
+   end
 end

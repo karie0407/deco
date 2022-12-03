@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'finders/finder'
   namespace :public do
  end
   devise_for :admins,skip: [:registrations, :passwords],controllers: {
@@ -17,13 +18,18 @@ scope module: :public do
   patch '/customers/information' =>"customers#update"
   get '/customers/unsubscribe' => "customers#unsubscribe"
   patch '/customers/withdraw' => "customers#withdraw"
-  resources :post_images
+  resources :post_images do
+    collection do
+      get "search"
+    end
+  end
   resources :bookmarks, only: [:create, :show, :destroy] do
    resources :comments, only: [:create, :destroy]
   end
   resources :messages, only: [:create, :destroy]
   root to: "homes#top"
   get "/home/about" =>"homes#about",as:"about"
+  get "finder" => "finders#finder"
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

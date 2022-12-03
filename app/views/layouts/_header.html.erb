@@ -1,5 +1,11 @@
 <header>
   <title>Sweet tour</title>
+   <%= form_with url: finder_path, method: :get, local: :true do |f| %>
+      <%= f.select :range, options_for_select([['PostImage']]) %>
+      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+      <%= f.text_field :word %>
+      <%= f.submit "検索" %>
+   <% end %>
     <% if customer_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>

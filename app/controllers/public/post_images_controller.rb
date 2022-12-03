@@ -17,6 +17,10 @@ class Public::PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.all
+    @range = params[:range]
+    search = params[:search]
+    word = params[:word]
+    @customers = Customer.looks(search, word)
   end
 
   def show
@@ -40,6 +44,14 @@ class Public::PostImagesController < ApplicationController
     post_image = PostImage.find(params[:id])
     post_image.destroy
     redirect_to post_images_path
+  end
+
+  def search
+    if params[:title].present?
+      @post_images = PostImage.where("title LIKE ?","%{params[:title]}%")
+    else
+      @post_images = PostImage.none
+    end
   end
 
 

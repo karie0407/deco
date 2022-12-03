@@ -1,0 +1,16 @@
+<p>検索</p>
+<%= form_tag(search_path,:method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+
+<ul><% @post_images.each do |post_image| %>
+  <li>
+    <%= link_to post_image.title, post_image %>
+    <%= post_image.created_at %>
+    <%= post_image.status %>
+  </li>
+  <%= link_to "編集",edit_post_image_path(post_image) %>
+  <%= link_to "削除",post_image, method: :delete %>
+  <% end %>
+</ul>
