@@ -18,6 +18,10 @@ scope module: :public do
   get '/customers/unsubscribe' => "customers#unsubscribe"
   patch '/customers/withdraw' => "customers#withdraw"
   resources :posts
+  resources :bookmarks, only: [:create, :show, :destroy] do
+   resources :comments, only: [:create, :destroy]
+  end
+  resources :messages, only: [:create, :destroy]
   root to: "homes#top"
   get "/home/about" =>"homes#about",as:"about"
 end

@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
-  belongs_to :customers
+  belongs_to :customer
+  has_many :bookmarks, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_one_attached :image
 
   def get_image(width, height)
