@@ -4,11 +4,11 @@ class PostImage < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_one_attached :image
 
-  def self.looks(searches, words)
-    if searches == "perfect_match"
-      @post_image = PostImage.where("name LIKE ?", "#{words}")
+  def self.search(search)
+    if search != ""
+    PostImage.where(["title LIKE(?) OR introduction LIKE(?)", "%#{search}%","%#{search}%"])
     else
-      @post_image = PostImage.where("name LIKE ?", "%#{words}%")
+    PostImage.all
     end
   end
 

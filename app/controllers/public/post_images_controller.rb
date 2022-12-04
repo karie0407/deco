@@ -47,11 +47,7 @@ class Public::PostImagesController < ApplicationController
   end
 
   def search
-    if params[:title].present?
-      @post_images = PostImage.where("title LIKE ?","%{params[:title]}%")
-    else
-      @post_images = PostImage.none
-    end
+    @post_images = PostImage.search(params[:keyword])
   end
 
 
