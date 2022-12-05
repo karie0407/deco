@@ -4,6 +4,9 @@
 <%= @post_image.introduction %>
 <%= @post_image.customer.name %>
 <%= @post_image.created_at %>
+<% @post_image.tags.each do |tag| %>
+<%= tag.name %>
+<% end %>
 
 <%= link_to "編集する",edit_post_image_path(@post_image.id) %>
 <%= link_to "削除する", post_image_path(@post_image.id),method: :delete,"data-confirm"=>"本当に削除しますか？" %>

@@ -3,7 +3,6 @@ class Public::CustomersController < ApplicationController
   def show
   @post_image = PostImage.new
   @customer = current_customer
-  @post_images = PostImage.all
   end
 
   def edit

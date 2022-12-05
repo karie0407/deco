@@ -2,6 +2,8 @@ class PostImage < ApplicationRecord
   belongs_to :customer
   has_many :bookmarks, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
   has_one_attached :image
 
   def self.search(search)

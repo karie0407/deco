@@ -18,9 +18,10 @@ scope module: :public do
   patch '/customers/information' =>"customers#update"
   get '/customers/unsubscribe' => "customers#unsubscribe"
   patch '/customers/withdraw' => "customers#withdraw"
-  resources :post_images do
+  resources :post_images, param: :id do
     collection do
       get "search"
+      get "list"
     end
   end
   resources :bookmarks, only: [:create, :show, :destroy] do
@@ -29,7 +30,6 @@ scope module: :public do
   resources :messages, only: [:create, :destroy]
   root to: "homes#top"
   get "/home/about" =>"homes#about",as:"about"
-  get "finder" => "finders#finder"
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

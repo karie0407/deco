@@ -7,6 +7,6 @@
 <%= f.text_area :introduction %>
 <%= f.label :image,"画像" %>
 <%= f.file_field :image, accept: "image/*" %>
-
+<%= render "public/post_images/form",f: f %>
 <%= f.submit "投稿" %>
 <% end %>

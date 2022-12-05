@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_03_080717) do
+ActiveRecord::Schema.define(version: 2022_12_05_102619) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,12 @@ ActiveRecord::Schema.define(version: 2022_12_03_080717) do
     t.integer "post_image_id", null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "slug", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "bookmark_id", null: false
@@ -94,6 +100,21 @@ ActiveRecord::Schema.define(version: 2022_12_03_080717) do
     t.integer "customer_id", null: false
     t.string "title", null: false
     t.text "introduction", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_post_images_on_category_id"
+  end
+
+  create_table "post_tags", force: :cascade do |t|
+    t.integer "post_image_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

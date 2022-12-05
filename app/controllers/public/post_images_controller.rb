@@ -16,11 +16,7 @@ class Public::PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all
-    @range = params[:range]
-    search = params[:search]
-    word = params[:word]
-    @customers = Customer.looks(search, word)
+    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images : PostImage.all
   end
 
   def show
@@ -50,6 +46,11 @@ class Public::PostImagesController < ApplicationController
     @post_images = PostImage.search(params[:keyword])
   end
 
+  def list
+    @post_images = current_customer.post_images.all
+    @post_image = PostImage.new
+  end
+
 
   def guest_check
     if current_customer == Customer.find(1)
@@ -57,6 +58,6 @@ class Public::PostImagesController < ApplicationController
     end
   end
   def post_image_params
-    params.require(:post_image).permit(:title, :introduction, :image, :customer_id)
+    params.require(:post_image).permit(:title, :introduction, :image, :customer_id, tag_ids: [])
   end
 end
