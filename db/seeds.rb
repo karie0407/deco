@@ -10,3 +10,8 @@ Tag.create([
  { name: "チョコレート"},
  { name: "カフェ"}
  ])
+
+ Admin.create(
+  email: "test@hoge.com",
+  password: "testhoge"
+  )

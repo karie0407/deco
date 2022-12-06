@@ -23,9 +23,14 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = current_customer
+    if @customer.email == 'guest@example.com'
+      reset_session
+      redirect_to post_images_path
+    else
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
+    end
   end
 
   private

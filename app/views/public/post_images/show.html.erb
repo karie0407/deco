@@ -8,5 +8,19 @@
 <%= tag.name %>
 <% end %>
 
+<div>
+  <p>コメント件数：<%= @post_image.messages.count %></p>
+  <% @post_image.messages.each do |message| %>
+    <%= message.customer.name %>
+    <%= message.created_at.strftime('%Y/%m/%d') %><%= message.message %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@post_image, @message] do |f| %>
+    <%= f.text_area :message, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
 <%= link_to "編集する",edit_post_image_path(@post_image.id) %>
 <%= link_to "削除する", post_image_path(@post_image.id),method: :delete,"data-confirm"=>"本当に削除しますか？" %>
