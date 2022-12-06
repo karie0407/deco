@@ -12,7 +12,11 @@
   <p>コメント件数：<%= @post_image.messages.count %></p>
   <% @post_image.messages.each do |message| %>
     <%= message.customer.name %>
-    <%= message.created_at.strftime('%Y/%m/%d') %><%= message.message %>
+    <%= message.message %>
+    <%= message.created_at.strftime('%Y/%m/%d') %>
+    <% if message.customer == current_customer %>
+    <%= link_to "削除",post_image_message_path(message.post_image,message),method: :delete %>
+    <% end %>
   <% end %>
 </div>
 <div>
@@ -24,3 +28,16 @@
 
 <%= link_to "編集する",edit_post_image_path(@post_image.id) %>
 <%= link_to "削除する", post_image_path(@post_image.id),method: :delete,"data-confirm"=>"本当に削除しますか？" %>
+  <% if @post_image.bookmarked_by?(current_customer) %>
+    <p>
+      <%= link_to post_image_bookmarks_path(@post_image), method: :delete do %>
+        ★<%= @post_image.bookmarks.count %> ブックマーク解除
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to post_image_bookmarks_path(@post_image), method: :post do %>
+        ★<%= @post_image.bookmarks.count %> ブックマーク追加
+      <% end %>
+    </p>
+  <% end %>

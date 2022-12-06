@@ -14,6 +14,10 @@ class PostImage < ApplicationRecord
     end
   end
 
+  def bookmarked_by?(customer)
+    bookmarks.exists?(customer_id: customer.id)
+  end
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')

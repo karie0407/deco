@@ -1,0 +1,6 @@
+<h2>ブックマーク一覧</h2>
+<% @bookmarks.each do |bookmark| %>
+<%= bookmark.post_image.title %>
+<%= image_tag bookmark.post_image.get_image(200,200) %>
+<p><%= link_to "#{bookmark.comments.count} コメント", bookmarks_path %></p>
+<% end %>

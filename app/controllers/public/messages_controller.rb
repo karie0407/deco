@@ -7,6 +7,11 @@ class Public::MessagesController < ApplicationController
     redirect_to post_image_path(post_image)
   end
 
+  def destroy
+    Message.find(params[:id]).destroy
+    redirect_to post_image_path(params[:post_image_id])
+  end
+
   private
 
   def message_params
