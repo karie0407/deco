@@ -2,5 +2,6 @@
 <% @bookmarks.each do |bookmark| %>
 <%= bookmark.post_image.title %>
 <%= image_tag bookmark.post_image.get_image(200,200) %>
-<p><%= link_to "#{bookmark.comments.count} コメント", bookmarks_path %></p>
+<%= bookmark.memo %>
+<%= link_to "詳細ページ",  post_image_path(bookmark.post_image.id)%>
 <% end %>

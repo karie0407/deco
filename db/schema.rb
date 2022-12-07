@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_05_103524) do
+ActiveRecord::Schema.define(version: 2022_12_07_045403) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,20 +57,7 @@ ActiveRecord::Schema.define(version: 2022_12_05_103524) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "post_image_id", null: false
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.string "slug", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "bookmark_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "comment", null: false
+    t.string "memo"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -91,9 +78,8 @@ ActiveRecord::Schema.define(version: 2022_12_05_103524) do
     t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "message", null: false
-    t.integer "post_id"
     t.integer "post_image_id", null: false
+    t.text "message", null: false
   end
 
   create_table "post_images", force: :cascade do |t|
@@ -102,8 +88,6 @@ ActiveRecord::Schema.define(version: 2022_12_05_103524) do
     t.text "introduction", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "category_id"
-    t.index ["category_id"], name: "index_post_images_on_category_id"
   end
 
   create_table "post_tags", force: :cascade do |t|

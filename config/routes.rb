@@ -10,11 +10,13 @@ devise_for :customers, skip:[:passwords],controllers: {
   sessions: 'public/sessions'
 }
 devise_scope :customer do
-post 'customers/guest_sign_in' => 'public/sessions#guest_sign_in'
+post 'customers/guest_sign_in' => 'customers/sessions#guest_sign_in'
 end
 
 namespace :admin do
   resources :customers,only: [:index, :show, :edit, :update]
+  resources :post_images,only: [:index, :show, :edit, :update]
+  resources :messages,only: [:index, :destroy]
  end
   scope module: :public do
     get '/customers/my_page'=>"customers#show"
@@ -26,7 +28,6 @@ namespace :admin do
     resources :post_images do
      resources :messages, only: [:create, :destroy]
      resource :bookmarks, only: [:create, :destroy]
-     resources :comments, only: [:create, :destroy]
       collection do
         get "search"
         get "list"

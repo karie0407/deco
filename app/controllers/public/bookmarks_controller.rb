@@ -9,8 +9,6 @@ class Public::BookmarksController < ApplicationController
 
   def index
   @bookmarks = current_customer.bookmarks.all
-  @comment = Comment.new
-  # @bookmark = Bookmark.find(params[:bookmark_id])
   end
 
   def destroy
@@ -18,5 +16,6 @@ class Public::BookmarksController < ApplicationController
     bookmark = current_customer.bookmarks.find_by(post_image_id: post_image.id)
     bookmark.destroy
     redirect_to post_image_path(post_image)
+
   end
 end

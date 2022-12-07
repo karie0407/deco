@@ -1,5 +1,4 @@
 class Bookmark < ApplicationRecord
   belongs_to :post_image
   belongs_to :customer
-  has_many :comments, dependent: :destroy
 end

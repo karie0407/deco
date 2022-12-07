@@ -6,10 +6,9 @@ class Customer < ApplicationRecord
    has_many :post_images, dependent: :destroy
    has_many :bookmarks, dependent: :destroy
    has_many :messages, dependent: :destroy
-   has_many :comments, dependent: :destroy
    def self.guest
-   　customer = Customer.find_or_create_by!(email: "guest@exstra.com") do |customer|
-   　customer.password = SecureRandom.urlsafe_base64
+    find_or_create_by!(email: "guest@example.com") do |customer|
+    customer.password = SecureRandom.urlsafe_base64
    end
    end
    def self.looks(searches, words)
