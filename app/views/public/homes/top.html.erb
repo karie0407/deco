@@ -1,3 +1,15 @@
-<%= image_tag("23122618.jpg") %>
-<p>sweet tourへようこそ！このサイトはコミュニティサイトになります。
-どなたでも閲覧は可能ですが、投稿・ブックマークする際には会員登録する必要がございます</p>
+<div class="container-fluid">
+  <div class="row">
+   <div class="col-6 p-4">
+    <%= image_tag "23122618.jpg",size:"700x600" %>
+    </div>
+    <p class="col-8 col-md-3 offset-1 pt-5 mx-auto h5">sweet tourへようこそ！このサイトはコミュニティサイトになります。<br />
+          どなたでも閲覧は可能ですが、<br />
+          投稿・ブックマークする際には会員登録する必要がございます<br />
+          <br>
+          <a class="text-center"><%= link_to "ログインはこちら", new_customer_session_path %></a><br/>
+          <%= link_to "新規登録はこちら", new_customer_registration_path %><br />
+    </p>
+   </div>
+  </div>
+</div>

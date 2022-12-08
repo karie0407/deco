@@ -1,5 +1,17 @@
 <header>
-  <title>Sweet tour</title>
+<div class="container">
+  <div class="row">
+   <div class ="col-sm-8 col-md-7 py-4">
+  <a class="navbar-brand p-3" href="/">Swwet tour</a>
+    <% if customer_signed_in? %>
+    <ul class="nav col-lg-auto my-3 my-md-0">
+      <li>ようこそ、<%= current_customer.name %>さん！</li>
+    </ul>
+    <% end %>
+    </div>
+  </div>
+
+    <ul class="nav col-6 col-sm-3 col-lg-auto my-2 justify-content-end my-md-0">
     <% if customer_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary mx-3 my-1" %>
@@ -24,4 +36,7 @@
       <%= f.text_field :keyword %>
       <%= f.submit "検索" %>
     <% end %>
+    </ul>
+     </div>
+    </div>
   </header>
