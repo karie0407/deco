@@ -1,19 +1,30 @@
-<h2>投稿一覧</h2>
-
-<% @post_images.each do |post_image| %>
- <%= link_to post_image_path(post_image.id) do %>
-    <%= post_image.title %>
- <% end %>
- <span><%= image_tag post_image.get_image(100,100) %></span>
-  <p><%= link_to "#{post_image.messages.count} コメント", post_image_path(post_image.id) %></p>
-  <% end %>
-
-<%= form_tag post_images_path, method: :get do %>
-      <%= select_tag :tag_id,
-                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                     {
-                       prompt: 'タグで絞り込み検索',
-                       onchange: 'submit(this.form);'
-                     }
-     %>
+<div class="container">
+ <h2>投稿一覧</h2>
+ <%= form_tag post_images_path, method: :get do %>
+   <%= select_tag :tag_id,
+       options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+        {
+         prompt: 'タグで絞り込み検索',
+          onchange: 'submit(this.form);'
+          }
+    %>
     <% end %>
+  <div class="row">
+   <div class="col-12 d-flex flex-wrap m-4">
+      <% @post_images.each do |post_image| %>
+     <div class="card m-3" style="width:200px; height: 230px;">
+
+      <%= image_tag post_image.get_image(200,200) %>
+       <div class="card-title text-center p-2">
+        <%= link_to post_image_path(post_image.id) do %>
+        <%= post_image.title %>
+        <% end %>
+       </div>
+        <div class="card-text text-center">
+         <%= link_to "#{post_image.messages.count} コメント", post_image_path(post_image.id) %>
+        </div>
+     </div>
+     <% end %>
+    </div>
+ </div>
+</div>

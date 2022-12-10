@@ -1,5 +1,5 @@
 class Public::PostImagesController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:index,:show]
   before_action :guest_check
   def new
     @post_image = PostImage.new
