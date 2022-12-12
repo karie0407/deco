@@ -6,11 +6,11 @@
   <%= form_with model:post_image, url: post_images_path, method: :post do |f| %>
   <div class="form-group">
   <%= f.label :title,"タイトル", class:"form-label" %>
-  <%= f.text_field :title, class:"form-control col-5" %>
+  <%= f.text_field :title, class:"form-control col-9" %>
   </div>
   <div class="form-group">
   <%= f.label :introduction,"説明文", class:"form-label" %>
-  <%= f.text_area :introduction, class:"col-5 form-control" %>
+  <%= f.text_area :introduction, class:"col-9 form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :image,"画像", class:"form-label" %>

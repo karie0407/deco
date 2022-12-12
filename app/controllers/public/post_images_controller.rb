@@ -47,10 +47,14 @@ class Public::PostImagesController < ApplicationController
     @post_images = PostImage.search(params[:keyword])
   end
 
-  def list
+  def lists
     @post_images = current_customer.post_images.all
     @post_image = PostImage.new
   end
+
+  # def list
+  # @post_image = current_customer.post_images.find(params[:id])
+  # end
 
 
   def guest_check

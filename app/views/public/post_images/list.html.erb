@@ -1,8 +1,32 @@
-<h2>自身の投稿一覧</h2>
-<% @post_images.each do |post_image| %>
-<p>タイトル</p>
-<%= post_image.title %>
-<%= image_tag post_image.get_image(200,200) %>
-<%= post_image.introduction %>
-<p><%= link_to "#{post_image.messages.count} コメント", post_image_path(post_image.id) %></p>
-<% end %>
+<div class="container">
+  <div class="row">
+    <h2 class="col-4 m-4">投稿詳細</h2>
+  </div>
+  <div class="row">
+    <div class="col-4 text-center">
+    <%= image_tag @post_image.get_image(200,200) %>
+    </div>
+    <div class="col-sm-5 col-8">
+     <h4 class="text-end">タイトル:
+      <%= @post_image.title %></h4>
+      <div class= "text-start">
+      <h5>内容：<%= @post_image.introduction %></h5>
+      <h5>投稿者：<%= @post_image.customer.name %></h5>
+      <h5>投稿日時：<%= @post_image.created_at.strftime("%Y/%m/%d") %></h5>
+      <h5>タグ：<% @post_image.tags.each do |tag| %>
+                <%= tag.name %>
+          <% end %>
+      </h5>
+      </div>
+    </div>
+  <p>コメント件数：<%= @post_image.messages.count %></p>
+  <% @post_image.messages.each do |message| %>
+    <%= message.customer.name %>
+    <%= message.message %>
+    <%= message.created_at.strftime('%Y/%m/%d') %>
+    <% if message.customer == current_customer %>
+    <%= link_to "削除",post_image_message_path(message.post_image,message),method: :delete %>
+    <% end %>
+  <% end %>
+  </div>
+</div>

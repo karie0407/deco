@@ -30,6 +30,7 @@ namespace :admin do
      resource :bookmarks, only: [:create, :destroy]
       collection do
         get "search"
+        get "lists"
         get "list"
       end
     end

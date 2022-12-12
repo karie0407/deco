@@ -1,48 +1,61 @@
-<h2>投稿詳細</h2>
-<%= image_tag @post_image.get_image(200,200) %>
-<%= @post_image.title %>
-<%= @post_image.introduction %>
-<%= @post_image.customer.name %>
-<%= @post_image.created_at.strftime("%Y/%m/%d") %>
-<% @post_image.tags.each do |tag| %>
-<%= tag.name %>
-<% end %>
-
-<div>
-  <p>コメント件数：<%= @post_image.messages.count %></p>
-  <% @post_image.messages.each do |message| %>
-    <%= message.customer.name %>
-    <%= message.message %>
-    <%= message.created_at.strftime('%Y/%m/%d') %>
-    <% if message.customer == current_customer %>
-    <%= link_to "削除",post_image_message_path(message.post_image,message),method: :delete %>
+<div class="container">
+  <div class="row">
+    <h2 class="col-4 m-4">投稿詳細</h2>
+  </div>
+  <div class="row align-start">
+    <div class="col-md-5 col-3">
+    <%= image_tag @post_image.get_image(200,200) %>
+    <% if current_customer.present? %>
+        <p class="text-start m-2">
+        <% if @post_image.bookmarked_by?(current_customer) %>
+          <%= link_to post_image_bookmarks_path(@post_image), method: :delete do %>
+          ★<%= @post_image.bookmarks.count %> ブックマーク解除
+          <% end %>
+        <% else %>
+          <%= link_to post_image_bookmarks_path(@post_image), method: :post do %>
+          ★<%= @post_image.bookmarks.count %> ブックマーク追加
+          <% end %>
+        </p>
+        <% end %>
+    <% else %>
     <% end %>
-  <% end %>
-</div>
-<% if current_customer.present? %>
-<div>
-  <%= form_with model: [@post_image, @message] do |f| %>
-    <%= f.text_area :message, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
-
-<%= link_to "編集する",edit_post_image_path(@post_image.id) %>
-<%= link_to "削除する", post_image_path(@post_image.id),method: :delete,"data-confirm"=>"本当に削除しますか？" %>
-  <% if @post_image.bookmarked_by?(current_customer) %>
-    <p>
-      <%= link_to post_image_bookmarks_path(@post_image), method: :delete do %>
-        ★<%= @post_image.bookmarks.count %> ブックマーク解除
+    </div>
+    <div class="col-md-5">
+      <h4 class="text-start">タイトル:
+      <%= @post_image.title %>
+      </h4>
+      <h5 class="m-2">内容：<%= @post_image.introduction %><br>
+      投稿者：<%= @post_image.customer.name %><br>
+      投稿日時：<%= @post_image.created_at.strftime("%Y/%m/%d") %><br>
+      タグ：<% @post_image.tags.each do |tag| %>
+                <%= tag.name %>
+          <% end %><br>
+        コメント件数：<%= @post_image.messages.count %></h5>
+        <% if current_customer.present? %>
+        <%=link_to "編集する", edit_post_image_path(@post_image.id), class:"btn btn-success m-2" %>
+        <%= link_to "削除する", post_image_path(@post_image.id), method: :delete,"data-confirm" => "本当に削除しますか？",class:"btn btn-danger m-2" %>
+        <% else %>
+        <% end %>
+      </div>
+  </div>
+   <div class="row">
+      <div class="col-5">
+      <h4>コメント一覧</h4>
+        <% @post_image.messages.each do |message| %>
+        <div class="justify-content-start">
+        <%= message.message %>
+        <%= message.customer.name %>
+        <%= message.created_at.strftime('%Y/%m/%d') %>
+        <% if message.customer == current_customer %>
+        <%= link_to "編集",edit_post_image_path(message.post_image,message.id) %>
+        <%= link_to "削除",post_image_message_path(message.post_image,message),method: :delete %>
+        <% end %>
+        <% end %>
+        </div>
+      </div>
+      <%= form_with model: [@post_image, @message] do |f| %>
+      <%= f.text_area :message, rows: '5', placeholder: "コメントをここに",class:"m-5 offset-9" %>
+      <a class="p-2"><%= f.submit "送信する" %></a>
       <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to post_image_bookmarks_path(@post_image), method: :post do %>
-        ★<%= @post_image.bookmarks.count %> ブックマーク追加
-      <% end %>
-    </p>
-  <% end %>
-
-  <% else %>
-
-  <% end %>
+    </div>
+</div>

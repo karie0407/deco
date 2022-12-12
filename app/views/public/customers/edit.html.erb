@@ -1,11 +1,16 @@
-<h2>ユーザー情報編集</h2>
-<%= form_with model: @customer,url: customers_information_path, method: :patch do |f| %>
-
-<%= f.label "ユーザー名" %>
-<%= f.text_field :name %>
-<%= f.label "メールアドレス" %>
-<%= f.text_field :email %>
-
-<%= f.submit "変更を保存" %>
-
-<% end %>
+<div class="container">
+  <div class="row">
+    <h2 class="col-sm-6 col-8 m-5">ユーザー情報編集</h2>
+  </div>
+  <div class="row">
+    <div class="col-6 align-items-center">
+    <%= form_with model: @customer,url: customers_information_path, method: :patch do |f| %>
+      <%= f.label "ユーザー名", class:"form-label" %>
+      <%= f.text_field :name, class:"form-control" %>
+      <%= f.label "メールアドレス",class:"form-label" %>
+      <%= f.text_field :email, class:"form-control" %>
+      <%= f.submit "変更を保存", class:"btn btn-success m-3 col-5" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <h2 class="col-6 mx-4">投稿履歴
+    </h2>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex flex-wrop m-4">
+    <% @post_images.each do |post_image| %>
+      <div class="card m-3" style="width:200px; height: 230px;">
+      <%= image_tag post_image.get_image(200,200) %>
+        <div class="card-title text-center p-2">
+        <%= link_to post_image_path(post_image.id) do %>
+        <%= post_image.title %>
+        <% end %>
+        </div>
+          <div class="card-text text-center">
+            <%= link_to "#{post_image.messages.count} コメント", post_image_path(post_image.id) %>
+          </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

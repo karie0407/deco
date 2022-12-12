@@ -1,7 +1,18 @@
-<h2>ブックマーク一覧</h2>
-<% @bookmarks.each do |bookmark| %>
-<%= bookmark.post_image.title %>
-<%= image_tag bookmark.post_image.get_image(200,200) %>
-<%= bookmark.memo %>
-<%= link_to "詳細ページ",  post_image_path(bookmark.post_image.id)%>
-<% end %>
+<div class="container">
+  <div class="row col-md-5 col-8 m-3">
+  <h2>ブックマーク一覧</h2>
+  </div>
+    <div class="col-12 d-flex flex-wrap m-4">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="card m-3" style="width:200px; height: 230px;">
+        <%= image_tag bookmark.post_image.get_image(200,200) %>
+        <div class="card-title text-center p-2">
+        <%= link_to post_image_path(bookmark.post_image.id),class:"link-success" do %>
+        <%= bookmark.post_image.title %>
+        <% end %>
+        </div>
+        <%= bookmark.memo %>
+      </div>
+      <% end %>
+    </div>
+</div>
