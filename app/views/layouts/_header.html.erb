@@ -14,11 +14,11 @@
         <%= link_to "ブックマーク一覧", bookmarks_path, class: "btn btn-outline-secondary mx-3 my-1" %>
       </li>
       <% elsif admin_signed_in? %>
-    <li>
-      <%= link_to "投稿一覧", admin_post_images_path, class: "btn btn-outline-secondary mx-3 my-1" %>
-      <%= link_to "会員一覧",admin_customers_path,class: 'btn btn-outline-secondary mx-3 my-1'%>
-      <%= link_to "ログアウト",destroy_admin_session_path, method: :delete,class: 'btn btn-outline-secondary mx-3 my-1'%>
-    </li>
+        <li>
+          <%= link_to "投稿一覧", admin_post_images_path, class: "btn btn-outline-secondary mx-3 my-1" %>
+          <%= link_to "会員一覧",admin_customers_path,class: 'btn btn-outline-secondary mx-3 my-1'%>
+          <%= link_to "ログアウト",destroy_admin_session_path, method: :delete,class: 'btn btn-outline-secondary mx-3 my-1'%>
+        </li>
     <% else %>
       <li>
         <%= link_to "ABOUT",about_path, class: "btn btn-outline-secondary mx-3 my-1" %>

@@ -9,6 +9,8 @@
       <%= f.text_field :name, class:"form-control" %>
       <%= f.label "メールアドレス",class:"form-label" %>
       <%= f.text_field :email, class:"form-control" %>
+      <%= f.label :birth_date,"生年月日",class: "m-3" %>
+      <%= f.date_select :birth_date, use_mouth_numbers: true,start_year: 1930, end_year: (Time.now.year - 10),default: Date.new(1989,1,1) %>
       <%= f.submit "変更を保存", class:"btn btn-success m-3 col-5" %>
       <% end %>
     </div>

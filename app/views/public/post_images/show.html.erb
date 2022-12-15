@@ -53,9 +53,11 @@
         <% end %>
         </div>
       </div>
+      <% if current_customer.present? %>
       <%= form_with model: [@post_image, @message] do |f| %>
       <%= f.text_area :message, rows: '5', placeholder: "コメントをここに",class:"m-5 offset-9" %>
       <a class="p-2"><%= f.submit "送信する" %></a>
+      <% end %>
       <% end %>
     </div>
 </div>

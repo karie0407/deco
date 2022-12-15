@@ -9,7 +9,7 @@
         </div>
           <div class="form-group row">
             <%= f.label :birth_date,"生年月日",class: "m-3" %>
-            <%= f.date_select :birth_date, user_mouth_numbers: true,start_year: 1930, end_year: (Time.now.year - 10),default: Date.new(1989,1,1) %>
+            <%= f.date_select :birth_date, use_mouth_numbers: true,start_year: 1930, end_year: (Time.now.year - 10),default: Date.new(1989,1,1) %>
           </div>
             <div class="field">
               <%= f.label :email,"メールアドレス" %><br />

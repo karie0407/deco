@@ -14,10 +14,12 @@
         <tr>
           <th>ユーザー名</th>
           <th>メールアドレス</th>
+          <th>生年月日</th>
         </tr>
         <tr>
           <td><%=@customer.name %></td>
           <td><%=@customer.email %></td>
+          <td><%=@customer.birth_date.strftime("%Y/%m/%d") %></td>
         </tr>
       </thead>
     </table>
